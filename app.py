@@ -5,8 +5,17 @@ from backendgpt import generate_subtopics
 from backendgpt import generate_explanation_and_activity 
 from backendgpt import generate_interactive_activity
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Global store to keep user_question
 variable_storage = {}
